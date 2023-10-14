@@ -1,0 +1,108 @@
+.navbar-light .navbar-brand {
+    color: white;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    color: white;
+  }
+
+  .navbar-light .navbar-brand:hover {
+    color: white;
+  }
+
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+  }
+    body {
+      background-image: url('../assets/slide1.jpg');
+    }
+
+    .card {
+      margin: 5%;
+    }
+
+    .h3-head {
+      text-align: center;
+      margin-top: 5%;
+      background-color: rgb(65, 7, 107);
+      border-radius: 5px;
+      height: 75%;
+      color: #ffff;
+      width: 100%;
+      font-size: 20px;
+      padding-top: 3%;
+    }
+
+    .row {
+      justify-content: space-around;
+      margin: auto;
+    }
+
+    .card-title {
+      font-size: 2rem;
+    }
+
+    .container-below {
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    .h3-body {
+      margin: 3%;
+      padding: 1%;
+      font-size: 18px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .col-9-below {
+      width: 75%;
+      max-height: 110px;
+    }
+    .table-container .table{
+      background-color: white;
+      border-radius:5px;
+    }
+    .table{
+      overflow:hidden;
+    }
+    
+    .btn-data {
+      background-color:rgb(65, 7, 107);
+      height: 50px;
+      color:#ffff;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+    }
+    .btn-data:hover{
+      background-color:rgb(100, 34, 161);
+    }
+    .chart{
+      background-color: #ffff;
+      max-width: 100%;
+      border-radius:5px;
+      padding: 1%;
+      margin-bottom: 3%;
+    }
+    canvas{
+      display:relative;
+    }
+    .btn{
+      width: 100%;
+    }
+    .availimg{
+      margin:auto;
+      margin-left:20px;
+      text-align:center;
+      width:25px;
+      height:25px;
+    }
+    .btn-primary{
+      background-color: #41076b;
+      border-color: purple;
+    }
+    .btn-primary:hover{
+      border-color: purple;
+      background-color: rgb(100, 34, 161);
+    }

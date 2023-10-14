@@ -1,0 +1,27 @@
+body{
+    background-image: url("../assets/slide1.jpg");
+  }
+.btn-primary {
+    color: #fff;
+    width: 100%;
+    background-color: rgb(65, 7, 107);
+    border-color: transparent;
+  }
+  .btn-primary:hover{
+    background-color: rgb(100, 34, 161);
+    border-color:none !important;
+  }
+  .btn-check:focus+.btn-primary .btn-primary:focus{
+    background-color: rgb(100, 34, 161) !important;
+    border-color: rgb(100, 34, 161) !important; 
+  }
+button{
+    margin-left:0 !important;
+    margin-top: 10px;
+  }
+.d-flex .align-items-center{
+    justify-content: center;
+}
+.form-check-input[type=checkbox]:checked{
+  background-color:rgb(65, 7, 107) !important;
+}
