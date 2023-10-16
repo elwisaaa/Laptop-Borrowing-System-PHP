@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
+<?php
+include 'connection.php';
+//Get all list of laptop from DB
+$getlistoflaptop = $conn->query("SELECT * FROM laptop")
 
+
+?>
 <head>
     <script src="../js/jquery-3.6.1.min.js"></script>
     <meta charset="utf-8">
@@ -16,6 +22,7 @@
     <main>
         <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+              <?php while ($row = $getlistoflaptop->fetch_assoc()){?>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <img src="../assets/acerr14.png" class="card-img-top" alt="...">
@@ -23,127 +30,17 @@
                             <div class="clearfix mb-3">
                                 <span class="float-start badge rounded-pill bg-primary">No 1</span>
                             </div>
-                            <h5 class="card-title">Acer Aspire R14</h5>
+                            <h5 class="card-title"><?php echo $row['laptop_name']; ?></h5>
                             <div class="text-center my-4">
                                 <button id="1" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/acernitro.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">No 2</span>
-                            </div>
-                            <h5 class="card-title">Acer Aspire V 15 Nitro</h5>
-                            <div class="text-center my-4">
-                                <button id="2" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/acernitro.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">No 3</span>
-                            </div>
-                            <h5 class="card-title">Acer Aspire V 15 Nitro</h5>
-                            <div class="text-center my-4">
-                                <button id="3" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/pavilion14.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">No 4</span>
-                            </div>
-                            <h5 class="card-title">HP Pavillion 14</h5>
-                            <div class="text-center my-4">
-                                <button id="4" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/lenovo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">L1</span>
-                            </div>
-                            <h5 class="card-title">Lenovo Thinkpad L15 Gen2</h5>
-                            <div class="text-center my-4">
-                                <button id="L1" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/lenovo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">L2</span>
-                            </div>
-                            <h5 class="card-title">Lenovo Thinkpad L15 Gen2</h5>
-                            <div class="text-center my-4">
-                                <button id="L2" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/lenovo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">L3</span>
-                            </div>
-                            <h5 class="card-title">Lenovo Thinkpad L15 Gen2</h5>
-                            <div class="text-center my-4">
-                                <button id="L3" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/lenovo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">L4</span>
-                            </div>
-                            <h5 class="card-title">Lenovo Thinkpad L15 Gen2</h5>
-                            <div class="text-center my-4">
-                                <button id="L4" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="../assets/lenovo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">L5</span>
-                            </div>
-                            <h5 class="card-title">Lenovo Thinkpad L15 Gen2</h5>
-                            <div class="text-center my-4">
-                                <button id="L5" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
+       
     </main>
     <!-- The Modal -->
     <div class="modal fade" id="modal">
