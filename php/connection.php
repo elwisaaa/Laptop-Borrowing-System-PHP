@@ -4,7 +4,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $port = "3306";
-$dbname = "laptop-borrowing-db";    
+$dbname = "laptop-borrowing-dbnew";    
 //Create connection
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 

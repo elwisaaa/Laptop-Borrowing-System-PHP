@@ -22,10 +22,12 @@ $getlistoflaptop = $conn->query("SELECT * FROM laptop")
     <main>
         <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-              <?php while ($row = $getlistoflaptop->fetch_assoc()){?>
+              <?php while ($row = $getlistoflaptop->fetch_assoc()){ 
+                $imageData = $row["imageFile"];
+                $imageSrc = "data:image/png;base64," . base64_encode($imageData);?>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="../assets/acerr14.png" class="card-img-top" alt="...">
+                        <?php echo '<img src="' . $row['imgPath'] . '" alt="..." class="card-img-top">';?>
                         <div class="card-body">
                             <div class="clearfix mb-3">
                                 <span class="float-start badge rounded-pill bg-primary">No 1</span>
