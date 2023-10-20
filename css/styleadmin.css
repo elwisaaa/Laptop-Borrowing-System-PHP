@@ -106,3 +106,20 @@
       border-color: purple;
       background-color: rgb(100, 34, 161);
     }
+    .modal-button{
+      margin-top: 5%;
+      text-align: center;
+    
+    }
+    .btnmodal{
+      border: none;
+      background-color:rgb(65, 7, 107) !important;
+      border-radius: 5px;
+      width: 100%;
+      color:white;
+      height: 30px;
+    }
+    
+    .btnmodal:hover{
+      background-color: rgb(100, 34, 161) !important;
+    }
