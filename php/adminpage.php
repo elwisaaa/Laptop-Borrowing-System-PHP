@@ -1,6 +1,11 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap@5.0.2.min.css">
+    <script src="../js/bootstrap@5.0.2.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styleadmin.css">
+
     <?php
     //include connection to database
     include 'connection.php';
@@ -23,13 +28,9 @@
     <link rel="icon" href="../assets/icon.svg">
     <title>Admin Page</title>
     <link rel="stylesheet" type="text/css" href="../css/styleindex.css">
-    <script src="../js/jquery-3.6.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="icon" href="./assets/icon.svg">
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap@5.0.2.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styleadmin.css">
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -63,8 +64,11 @@
             <div class="container-below">
               <h3 class="h3-body">Laptop Database</h3>
             </div>
+            <div class="container-below">
+              <button type="button" class="btn btn-primary btn-l" onclick="showmodal()">Add a laptop</button>
+            </div>
           </div>
-          <div class="col-9">
+          <div class="col-9" style="margin-top:3%;">
           <div class="table-container table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -147,23 +151,44 @@
           </div>
           <div class="col-9-below">
           </div>
-          <div class="col-9">
-            <div class="container-below">
-              <h3 class="h3-body">Most borrowed laptop</h3>
-            </div>
-            <div class="col">
-               <div class="chart">
-                  <div id="firstchart"></div>
-               </div>
-            </div>
-          </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Enter the new laptop info</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label>Laptop ID</label><br>
+                            <input id="idlaptop" type="text" class="form-control" placeholder="Laptop ID." required>
+                            <label>Laptop Name</label><br>
+                            <input id="laptopname" type="text" class="form-control" placeholder="Laptop name" required>
+                            <label>Laptop Image</label><br><br>
+                            <input type="file" id="image">
+                            <div class="modal-button">
+                                <button onclick="addlaptop()" id="borrow" type="button" class="btnmodal">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
 <script>
+  function showmodal()
+  {
+    console.log("clicked");
+    $('#modal').modal('show');
+  }
   $(function() {
     $('body').hide().fadeIn('slow');
     
@@ -207,20 +232,49 @@
           }
        });
     }
-var options = {
-  chart: {
-    type: 'bar'
-  },
-  series: [{
-    name: 'sales',
-    data: [30,40,45,50,49,60,70,91,125]
-  }],
-  xaxis: {
-    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
-  }
-}
+    File.prototype.convertToBase64 = function(callback){
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        callback(e.target.result)
+    };
+    reader.onerror = function(e) {
+        callback(null, e);
+    };        
+    reader.readAsDataURL(this);
+};
 
-var chart = new ApexCharts(document.querySelector("#firstchart"), options);
+$("#image").on('change',function(){
+    var selectedFile = this.files[0];
+    if (!selectedFile.name.match(/.(jpg|jpeg|png|gif)$/i)) {
+    }
+    else {
+        selectedFile.convertToBase64(function(base64){
+            console.log(base64);
+        })
+    }
+});
+function addlaptop() {
+        if ($("#idlaptop").val() && $("#laptopname").val() && $("#image").val()) {
+            var idlaptop = $("#idlaptop").val();
+            var laptopname = $("#laptopname").val();
+            var image = $("#image").val();
+            var dataString = 'idlaptop=' + idlaptop + '&laptopname=' + laptopname + '&image=' + image;
+            $.ajax({
+                type: 'POST',
+                data: dataString,
+                url: 'addlaptop.php',
+                success: function(response) {
+                    if (response.success) {
+                        alert("Success");
+                        location.reload();
+                    } else {
+                        alert("failed");
+                    }
+                }
+            });
+        } else {
+            alert("Please insert data!!");
+        }
 
-chart.render();
+    }
 </script>
