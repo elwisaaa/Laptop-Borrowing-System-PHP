@@ -28,11 +28,11 @@ $getlistoflaptop = $conn->query("SELECT * FROM laptop")
                     <?php echo '<img src="data:image/png;base64,' . base64_encode($row['imgFile']) . '" alt="..." class="card-img-top">'; ?>
                         <div class="card-body">
                             <div class="clearfix mb-3">
-                                <span class="float-start badge rounded-pill bg-primary">No 1</span>
+                                <span class="float-start badge rounded-pill bg-primary"><?php echo $row['laptop_id']; ?></span>
                             </div>
                             <h5 class="card-title"><?php echo $row['laptop_name']; ?></h5>
                             <div class="text-center my-4">
-                                <button id="1" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
+                            <button id="<?php echo $row['laptop_id']; ?>" type="button" class="btn btn-warning" onclick="checkavail(this)">Borrow</button>
                             </div>
                         </div>
                     </div>
