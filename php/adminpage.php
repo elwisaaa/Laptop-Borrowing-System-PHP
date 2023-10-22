@@ -21,7 +21,7 @@
   } else {
     header("location: badaccess.php");
   }
-  $resultlaptop = mysqli_query($conn, "SELECT * FROM laptop");
+  $resultlaptop = mysqli_query($conn, "SELECT * FROM laptop ORDER BY LENGTH(laptop_id), laptop_id");
 
   if (mysqli_num_rows($resultlaptop) > 0) {
     ?>
