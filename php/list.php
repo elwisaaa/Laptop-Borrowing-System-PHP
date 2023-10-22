@@ -3,7 +3,7 @@
 <?php
 include 'connection.php';
 //Get all list of laptop from DB
-$getlistoflaptop = $conn->query("SELECT * FROM laptop")
+$getlistoflaptop = $conn->query("SELECT * FROM laptop ORDER BY LENGTH(laptop_id), laptop_id")
 
 
 ?>
