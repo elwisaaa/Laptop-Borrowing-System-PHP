@@ -164,63 +164,77 @@
   </body>
 </html>
 <script>
-  $(function() {
-    $('body').hide().fadeIn('slow');
-    
-    });
-  function setsend(button)
-    {
-       var borrowid = button.id;
-       if(confirm("Set the date to today ?") == true){
+$(document).ready(function() {
+    // Fetch categories and populate the category select
+    function fetchCategories() {
         $.ajax({
-          url: 'setsend.php',
-          type: 'POST',
-          data: { borrowid: borrowid},
-          success: function(sended) {
-            if (sended.toggled){
-                window.location.replace("adminpage.php");
-            } else {
-                alert("Error set date !!");
-            }            
-          }
-       });
-       }
-       else{
-        alert("Cancelled !")
-       }
-       
-    }
-    function toggleavail(button)
-    {
-       var togglebtn = button.id;
-       $.ajax({
-          url: 'toggleavail.php',
-          type: 'POST',
-          data: { togglebtn: togglebtn},
-          success: function(response) {
-            if (response.toggled){
-                window.location.replace("adminpage.php");
-            } else {
-                alert("Error set availability !!");
+            url: 'fetchcategories.php',
+            method: 'GET',
+            success: function(data) {
+                $('#categorySelect').html(data);
             }
-            
-          }
-       });
+        });
     }
-var options = {
-  chart: {
-    type: 'bar'
-  },
-  series: [{
-    name: 'sales',
-    data: [30,40,45,50,49,60,70,91,125]
-  }],
-  xaxis: {
-    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
-  }
-}
 
-var chart = new ApexCharts(document.querySelector("#firstchart"), options);
+    // Fetch resources and populate the resource select
+    function fetchResources() {
+        $.ajax({
+            url: 'fetchresources.php',
+            method: 'GET',
+            success: function(data) {
+                $('#resourceSelect').html(data);
+            }
+        });
+    }
 
-chart.render();
+    fetchCategories();
+    fetchResources();
+
+    // Add category form submission
+    $('#addCategoryForm').on('submit', function(e) {
+        e.preventDefault();
+        var categoryName = $('#categoryName').val();
+        $.ajax({
+            url: 'addcategory.php',
+            method: 'POST',
+            data: { categoryName: categoryName },
+            success: function(response) {
+                alert(response.message);
+                fetchCategories();
+            }
+        });
+    });
+
+    // Add resource form submission
+    $('#addResourceForm').on('submit', function(e) {
+        e.preventDefault();
+        var resourceName = $('#resourceName').val();
+        var categoryId = $('#categorySelect').val();
+        $.ajax({
+            url: 'addresource.php',
+            method: 'POST',
+            data: { resourceName: resourceName, categoryId: categoryId },
+            success: function(response) {
+                alert(response.message);
+                fetchResources();
+            }
+        });
+    });
+
+    // Set availability form submission
+    $('#setAvailabilityForm').on('submit', function(e) {
+        e.preventDefault();
+        var resourceId = $('#resourceSelect').val();
+        var availableFrom = $('#availableFrom').val();
+        var availableTo = $('#availableTo').val();
+        $.ajax({
+            url: 'setavailability.php',
+            method: 'POST',
+            data: { resourceId: resourceId, availableFrom: availableFrom, availableTo: availableTo },
+            success: function(response) {
+                alert(response.message);
+            }
+        });
+    });
+});
 </script>
