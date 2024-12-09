@@ -34,7 +34,7 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="../index.php">e-Records</a>
+      <a class="navbar-brand" href="../index.php">Borrow Resource Rservation System</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -44,7 +44,7 @@
             <a class="nav-link" href="../index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="list.php">List of laptops</a>
+            <a class="nav-link" href="list.php">List of resorces</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.php">Log In</a>
@@ -61,7 +61,7 @@
           </div>
           <div class="col-9-below">
             <div class="container-below">
-              <h3 class="h3-body">Laptop Database</h3>
+              <h3 class="h3-body">Resources Database</h3>
             </div>
           </div>
           <div class="col-9">
@@ -69,8 +69,8 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Laptop ID</th>
-                    <th>Laptop Name</th>
+                    <th> ID</th>
+                    <th> Name</th>
                     <th>Availability</th>
                     <th>Set availability</th>
                   </tr>
@@ -117,9 +117,9 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>IC No</th>
+                    <th>Student No</th>
                     <th>Username</th>
-                    <th>Laptop ID</th>
+                    <th>Resource ID</th>
                     <th>Borrowed Date</th>
                     <th>Borrowed End</th>
                     <th>Purpose</th>
